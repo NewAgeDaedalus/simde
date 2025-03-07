@@ -541,7 +541,7 @@
 #if defined(__riscv_zve64d)
 #  define SIMDE_ARCH_RISCV_ZVE64D 1
 #endif
-#if defined(__riscv_v)
+#if defined(__riscv_v) || (defined(__riscv_zve64d) && defined(__riscv_zvl128b))
 #  define SIMDE_ARCH_RISCV_V 1
 #endif
 #if defined(__riscv_zvfh)
@@ -549,6 +549,9 @@
 #endif
 #if defined(__riscv_zvfhmin)
 #  define SIMDE_ARCH_RISCV_ZVFHMIN 1
+#endif
+#if defined(__riscv_zvlsseg) || defined(__riscv_v)
+#  define SIMDE_ARCH_RISCV_ZVLSSEG 1
 #endif
 
 /* SPARC

@@ -33,7 +33,7 @@
 
 #define SIMDE_VERSION_MAJOR 0
 #define SIMDE_VERSION_MINOR 8
-#define SIMDE_VERSION_MICRO 3
+#define SIMDE_VERSION_MICRO 4
 #define SIMDE_VERSION HEDLEY_VERSION_ENCODE(SIMDE_VERSION_MAJOR, SIMDE_VERSION_MINOR, SIMDE_VERSION_MICRO)
 // Also update meson.build in the root directory of the repository
 
@@ -1200,7 +1200,7 @@ HEDLEY_DIAGNOSTIC_POP
 #endif
 
 /* Initial support for RISCV V extensions based on ZVE64D. */
-#if defined(SIMDE_ARCH_RISCV_ZVE64D) && SIMDE_NATURAL_VECTOR_SIZE >= 64
+#if defined(SIMDE_ARCH_RISCV_ZVE64D) && SIMDE_NATURAL_VECTOR_SIZE >= 64 && defined(__riscv_v_fixed_vlen)
   #define RVV_FIXED_TYPE_DEF(name, lmul) \
     typedef vint8##name##_t  fixed_vint8##name##_t __attribute__((riscv_rvv_vector_bits(__riscv_v_fixed_vlen * lmul))); \
     typedef vint16##name##_t fixed_vint16##name##_t __attribute__((riscv_rvv_vector_bits(__riscv_v_fixed_vlen * lmul))); \
